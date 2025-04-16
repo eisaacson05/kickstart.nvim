@@ -1031,3 +1031,15 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Only run custom rails project setup if in a known rails project
+vim.api.nvim_create_autocmd('VimEnter', {
+  once = true,
+  callback = function()
+    local cwd = vim.fn.getcwd()
+
+    if cwd:find 'lycensed' then
+      require('shared.project_setup').setup()
+    end
+  end,
+})

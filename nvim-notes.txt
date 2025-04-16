@@ -1,0 +1,7 @@
+Restart Nvim
+:so %s
+
+Go to end of file
+G
+
+
